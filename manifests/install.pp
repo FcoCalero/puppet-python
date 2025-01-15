@@ -222,6 +222,10 @@ class python::install {
         $pip_category = undef
         $pip_package  = 'python3-pip'
         $pip_provider = pip3
+      } elsif ($facts['os']['family'] == 'SLES') and (versioncmp($facts['os']['release']['major'], '15') >= 0) {
+        $pip_category = undef
+        $pip_package  = 'python3-pip'
+        $pip_provider = pip3
       } elsif ($facts['os']['family'] == 'RedHat') and (versioncmp($facts['os']['release']['major'], '7') >= 0) {
         $pip_category = undef
         $pip_package  = 'python2-pip'

@@ -190,6 +190,15 @@ class python::install {
             }
           }
         }
+        'SLES': {
+          if $python::manage_pip_package {
+            package { 'python3-pip':
+              ensure   => $pip_ensure,
+              require  => Package['python'],
+              provider => 'yum',
+            }
+          }
+        }
         default: {
           if $python::manage_pip_package {
             package { 'pip':
